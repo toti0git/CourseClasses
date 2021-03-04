@@ -1,5 +1,5 @@
 import java.*;
-
+import java.lang.Override;
 public class Phone {
 
     private int id;
@@ -9,11 +9,12 @@ public class Phone {
     private String address;
     protected long creditCardNumber;
     private boolean credit;
-    private boolean kredit;
+    private boolean debit;
     private long talkingTime;
+    private String charging;
+    private String model;
 
-
-    public Phone(int id, String secondName, String name, String patronomic, String address, long creditCardNumber, boolean credit, boolean kredit, long talkingTime) {
+    public Phone(int id, String secondName, String name, String patronomic, String address, long creditCardNumber, boolean credit, boolean debit, long talkingTime) {
         this.id = id;
         this.secondName = secondName;
         this.name = name;
@@ -21,10 +22,16 @@ public class Phone {
         this.address = address;
         this.creditCardNumber = creditCardNumber;
         this.credit = credit;
-        this.kredit = kredit;
+        this.debit = debit;
         this.talkingTime = talkingTime;
     }
 
+    public Phone(String secondName, String name, String charging, String model) {
+        this.secondName = secondName;
+        this.name = name;
+        this.charging = charging;
+        this.model = model;
+    }
 
     public Phone(int id, String secondName, String name, String patronomic, String address, long talkingTime) {
         this.id = id;
@@ -37,6 +44,22 @@ public class Phone {
 
     public int getId() {
         return id;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setCharging(boolean charging) {
+        this.charging = charging;
+    }
+
+    public boolean isCharging() {
+        return charging;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     public String getSecondName() {
@@ -63,8 +86,8 @@ public class Phone {
         return credit;
     }
 
-    public boolean isKredit() {
-        return kredit;
+    public boolean isdebit() {
+        return debit;
     }
 
     public long getTalkingTime() {
@@ -95,7 +118,7 @@ public class Phone {
         this.creditCardNumber = creditCardNumber;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return "Phone{" +
                 "secondName='" + secondName + '\'' +
