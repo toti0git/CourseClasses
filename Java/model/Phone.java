@@ -1,4 +1,6 @@
-import java.*;
+package model;
+
+
 import java.lang.Override;
 public class Phone {
 
@@ -50,11 +52,11 @@ public class Phone {
         this.model = model;
     }
 
-    public void setCharging(boolean charging) {
+    public void setCharging(String charging) {
         this.charging = charging;
     }
 
-    public boolean isCharging() {
+    public String isCharging() {
         return charging;
     }
 
@@ -116,6 +118,10 @@ public class Phone {
 
     public void setCreditCardNumber(long creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
+    }
+
+    public String getCharging() {
+        return charging;
     }
 
     @Override
