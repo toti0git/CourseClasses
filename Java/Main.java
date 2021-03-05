@@ -2,62 +2,62 @@ import enums.ChargingTypeEnums;
 import enums.ModelEnums;
 import model.Phone;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
-
 public class Main {
 
     private static Phone adamsPhone = new Phone("Brown", "Adam", ChargingTypeEnums.TYPE_C.toString(), ModelEnums.IPHONE.toString());
     private static Phone johnsPhone = new Phone("Tom", "Tailor", ChargingTypeEnums.STANDART.toString(), ModelEnums.HUAWEI.toString());
     private static Phone[] allPhones = {adamsPhone, johnsPhone};
 
-    static void searchPhoneByName(String name) {
-
-        switch (name) {
-
-            case "Adam":
-                System.out.println("Phone's owner found ");
-                System.out.println(String.valueOf(adamsPhone.getName()) + '\n' +
-                        adamsPhone.getSecondName().toString() + '\n' +
-                        adamsPhone.getModel().toString() + '\n' +
-                        adamsPhone.getCharging().toString());
-                break;
-            case "Tailor":
-                System.out.println("Phone's owner found ");
-                System.out.println(String.valueOf(johnsPhone.getName()) + '\n' +
-                        johnsPhone.getSecondName().toString() + '\n' +
-                        johnsPhone.getModel().toString() + '\n' +
-                        johnsPhone.getCharging().toString());
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + name);
+    static void searchByModel(Phone[] phones, ModelEnums modelEnum){
+    for (Phone phone:phones){
+        if (phone.getModel().equals(modelEnum.toString())){
+            System.out.println("Phone with model "+modelEnum +" is detected");
+        }else {
+           // System.out.println("Phone with model "+modelEnum +" is not detected");
         }
-
+    }
+    }
+    static void searchByName(Phone[] phones, String ownersName){
+        for (Phone phone:phones){
+            if (phone.getName().equals(ownersName)){
+                System.out.println("Phone with owner's name "+ownersName +" is detected");
+            }else {
+               // System.out.println("Phone with model "+modelEnum +" is not detected");
+            }
+        }
+    }
+    static void searchBySurname(Phone[] phones, String ownersSurname){
+        for (Phone phone:phones){
+            if (phone.getSecondName().equals(ownersSurname)){
+                System.out.println("Phone with owner's surname "+ownersSurname +" is detected");
+            }else {
+                // System.out.println("Phone with model "+modelEnum +" is not detected");
+            }
+        }
+    }
+    static void searchChargingType (Phone[] phones,  ChargingTypeEnums chargingTypeEnum){
+        for (Phone phone:phones){
+            if (phone.getCharging().equals(chargingTypeEnum.toString())){
+                System.out.println("Phone with owner's chargingType "+chargingTypeEnum +" is detected");
+            }else {
+                // System.out.println("Phone with model "+modelEnum +" is not detected");
+            }
+        }
     }
 
-//    public static void searchByModel(Phone[] phone, ModelEnums modelEnums, Phone phone1) {
-//        for (int i = 0; i < phone.length; i++) {
-//            // Arrays.stream(phone).forEachOrdered(phone1 -> System.out.println(""));
-//            // Arrays.stream(phone).filter(phone1.getModel().equals("Huawei"));
-//            //if (Arrays.stream(phone).filter(){
-//            //  String[] newList=  Arrays.stream(phone).filter(phone2 -> phone2.getModel().equals(ModelEnums.HUAWEI));
-//            Stream<Phone> newList = Arrays.stream(phone).filter(phone2 -> phone2.getModel().equals(ModelEnums.HUAWEI));
-//            System.out.println(newList);
-//        }
-////            System.out.println+'\n'+
-////                    phone1.getSecondName()+'\n'
-////            +phone1.getCharging()+'\n'+
-////                    phone1.getModel());
-//    }
-//    //  }
 
+    static void showAllPhones(Phone[] phones){
+        for (Phone phone:phones){
+            System.out.println("Phones settings: " + phone.getModel());
+        }
+    }
 
     public static void main(String[] args) {
         String name = String.valueOf(args[0]);
+        showAllPhones(allPhones);
+        searchByModel(allPhones, ModelEnums.IPHONE);
+        searchByName(allPhones, "Adam");
 
-        searchPhoneByName(name);
-        //searchByModel(allPhones, ModelEnums.HUAWEI, adamsPhone);
     }
 
 
